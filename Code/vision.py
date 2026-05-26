@@ -44,8 +44,8 @@ def main():
         global v_Min
         v_Min = val
     
-    cv.createTrackbar("Hue Upper", "trackbars", 0, 255, hueUpper)  
-    cv.createTrackbar("Hue Lower", "trackbars", 0, 255, hueLower)
+    cv.createTrackbar("Hue Upper", "trackbars", 0, 180, hueUpper)  
+    cv.createTrackbar("Hue Lower", "trackbars", 0, 180, hueLower)
     cv.createTrackbar("Saturation Upper", "trackbars", 0, 255, satUpper)
     cv.createTrackbar("Saturation Lower", "trackbars", 0, 255, satLower)
     cv.createTrackbar("Value Upper", "trackbars", 0, 255, valUpper)
@@ -56,6 +56,14 @@ def main():
 
         lower_bound = np.array([h_Min, s_Min, v_Min])
         upper_bound = np.array([h_Max, s_Max, v_Max])
+
+        #Blue Lower bound
+        lower_bound = np.array([110, 50, 50])
+        upper_bound = np.array([130, 255, 255])
+
+        #Green Upper Bound
+        lower_bound = np.array([35, 0, 0])
+        upper_bound = np.array([85, 255, 255])
 
         HSVframe = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
 
